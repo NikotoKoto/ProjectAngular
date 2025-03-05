@@ -4,9 +4,25 @@ import { Component } from '@angular/core';
   selector: 'app-dyma',
   standalone: true,
   imports: [],
-  templateUrl: './dyma.component.html',
-  styleUrl: './dyma.component.css'
+  template: `
+    <h1 class="test">{{title}}</h1>
+    <ul>
+      <li>{{title}}</li>
+      <li>{{isLoggedin}}</li>
+      <li>{{number}}</li>
+      <li>{{name}}</li>
+     </ul>
+  `,
+  styles: `
+  .test{
+    color :red;
+
+  }`
 })
 export class DymaComponent {
 
+  title = "Dyma";
+  isLoggedin = true; 
+  number = 45;
+  name: string | undefined;
 }
