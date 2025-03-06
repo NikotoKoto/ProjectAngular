@@ -22,6 +22,10 @@ justify-content: center;
     align-items: center;
 }
 
+.w-half{
+    width: 50%;
+}
+
 .gap-12{
     gap: 12px;
 }

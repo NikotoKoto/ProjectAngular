@@ -15,7 +15,7 @@ import { CocktailsComponent } from './components/cocktails/cocktails.component';
     min-height : 100vh;
     display: flex;
     flex-direction : column;
-  },
-  `,
+  }
+  `
 })
 export class AppComponent {}

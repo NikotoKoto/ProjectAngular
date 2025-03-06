@@ -27,9 +27,7 @@ import { Component } from '@angular/core';
     <button class="btn btn-primary" (click)="handleClick()">Ajouter un Cocktail</button>
   `,
   styles: `
-  :host{
-    
-  }`
+ `
 })
 export class CocktailsListComponent {
 

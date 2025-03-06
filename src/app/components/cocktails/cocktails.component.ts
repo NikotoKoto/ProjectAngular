@@ -7,8 +7,8 @@ import { CocktailsDetailsComponent } from './components/cocktails-details/cockta
   standalone: true,
   imports: [CocktailsListComponent, CocktailsDetailsComponent],
   template: `
-    <app-cocktails-list class="flex-auto card"/>
-    <app-cocktails-details class="flex-auto"/>
+    <app-cocktails-list class="w-half card"/>
+    <app-cocktails-details class="w-half card"/>
   `,
   styles: 
     `:host{
