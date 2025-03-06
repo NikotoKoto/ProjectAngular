@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
-import { DymaComponent } from "./dyma/dyma.component";
-
-
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CocktailsComponent } from './components/cocktails/cocktails.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [DymaComponent]
+  imports: [HeaderComponent, FooterComponent, CocktailsComponent],
+  template: ` <app-header />
+    <app-cocktails class="flex-auto" />
+    <app-footer />`,
+  styles: `
+    :host {
+    min-height : 100vh;
+    display: flex;
+    flex-direction : column;
+  }
+  `
 })
-export class AppComponent {
-  title = 'ProjectAngular';
-}
+export class AppComponent {}
