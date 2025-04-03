@@ -50,3 +50,11 @@ body{
 .text-primary{
     color: var(--primary);
 }
+.radius{
+    border-radius: var(--radius)
+}
+.input{
+    border: var(--border);
+    padding: 12px;
+    border-radius: 20px;
+}
