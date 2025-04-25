@@ -7,13 +7,14 @@ import { Component, signal } from '@angular/core';
   template: `
     <button (click)="toggleMenu()">=</button>
     @if(show()){
-    <ul class="flex flex-row gap-16 ">
-      <li>
-        <a href="#">Panier</a>
+    <ul>
+      @for(link of navigation; track $index){
+        <li (click)="show.set(false)" class="mb-20" [class.mb-20]="!$last">
+        <a [href]="link.path">{{link.name}}</a>
       </li>
-      <li>
-        <a href="#"> Listes des cocktails</a>
-      </li>
+  
+      }
+      
     </ul>
 
     }
@@ -32,6 +33,7 @@ import { Component, signal } from '@angular/core';
     right: 12px;
     padding:20px;
     top: 65px;
+
     display:flex;
     flex-direction:column;
     border : var(--border);
@@ -50,7 +52,15 @@ import { Component, signal } from '@angular/core';
 })
 export class HeaderMenuComponent {
   show = signal(false);
-
+  navigation = [
+    { 
+    path: "#",
+    name:"Liste des cocktails"
+    },
+    {path: "#",
+      name: "Panier"
+    }
+  ]
   toggleMenu() {
     this.show.update((s) => !s);
   }

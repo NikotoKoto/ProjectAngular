@@ -1,5 +1,5 @@
 import { Cocktail } from '../interfaces';
-export const cocktails: Cocktail[] = [
+export const cocktails = [
         {
           imageUrl: "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
           title: "Mojito",

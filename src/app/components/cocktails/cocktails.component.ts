@@ -15,7 +15,9 @@ import { cocktails } from 'app/shared/data';
       [cocktails]="cocktails()"
       class="w-half card xs-w-full"
     />
-    <app-cocktails-details class="w-half xs-w-full card" [cocktail]="selectedCocktail()"/>
+    @if(selectedCocktail()){
+      <app-cocktails-details class="w-half xs-w-full card" [cocktail]="selectedCocktail()"/>
+    }
   `,
   styles: `:host{
       display: flex;
@@ -28,9 +30,9 @@ import { cocktails } from 'app/shared/data';
       `,
 })
 export class CocktailsComponent {
-  cocktails = signal<Cocktail[]>(cocktails);
+  cocktails = signal<Cocktail[]>([]);
   selectedCocktail = signal<Cocktail>(this.cocktails()[0]);
-  selectedCocktailName = computed(() => this.selectedCocktail().title)
+  selectedCocktailName = computed(() => this.selectedCocktail()?.title)
   selectCocktail(cocktailName: string) {
     console.log(cocktailName);
     const newCocktail = this.cocktails().find(
