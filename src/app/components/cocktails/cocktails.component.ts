@@ -30,6 +30,8 @@ import { cocktails } from 'app/shared/data';
       `,
 })
 export class CocktailsComponent {
+  cocktailsService = inject(CokctailsService);
+  cocktails = cocktailsService.cocktailsResource
   cocktails = signal<Cocktail[]>([]);
   selectedCocktail = signal<Cocktail>(this.cocktails()[0]);
   selectedCocktailName = computed(() => this.selectedCocktail()?.title)
