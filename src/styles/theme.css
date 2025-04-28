@@ -8,7 +8,7 @@ body{
     font-size: 1rem;
     font-weight: 500;
     padding:  8px 12px;
-    border: none;
+    border: 0;
     cursor: pointer;
     border-radius: var(--radius);
     transition: background-color 0.4s;
@@ -19,6 +19,12 @@ body{
 .btn-primary{
     background-color: var(--primary);
     color: var(--white);
+}
+
+.btn-outline-primary{
+    background-color: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .btn-primary:hover{

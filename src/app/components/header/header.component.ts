@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [HeaderMenuComponent],
-  template: `
+    selector: 'app-header',
+    imports: [HeaderMenuComponent],
+    template: `
     <div class="flex-auto text-bold text-lg" >Cocktails</div>
     <ul class="xs-hide flex flex-row gap-16 ">
       <li>
@@ -18,7 +17,7 @@ import { HeaderMenuComponent } from './components/header-menu/header-menu.compon
 
     <app-header-menu class="hide xs-show" />
   `,
-  styles: `
+    styles: `
   :host {
     display: flex;
     position:relative;
@@ -32,6 +31,6 @@ import { HeaderMenuComponent } from './components/header-menu/header-menu.compon
     a{
       color: var(--white);
     }
-  }`,
+  }`
 })
 export class HeaderComponent {}

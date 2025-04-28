@@ -1,22 +1,30 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CocktailsListComponent } from './components/cocktails-list/cocktails-list.component';
 import { CocktailsDetailsComponent } from './components/cocktails-details/cocktails-details.component';
 import { Cocktail } from 'app/shared/interfaces';
 import { cocktails } from 'app/shared/data';
+import { CocktailsService } from 'app/shared/services/cocktails.service';
+import { CartService } from 'app/shared/services/cart.service';
 
 @Component({
   selector: 'app-cocktails',
-  standalone: true,
   imports: [CocktailsListComponent, CocktailsDetailsComponent],
   template: `
-    <app-cocktails-list
-      (selectCocktail)="selectCocktail($event)"
-      [selectedCocktailName]="selectedCocktailName()"
-      [cocktails]="cocktails()"
-      class="w-half card xs-w-full"
+    <app-cocktails-list 
+    [(selectedCocktailId)]="selectedCocktailId"
+    [likedCocktailsID]="likedCocktailsID()"
+    (likeCocktails)="likeCocktails($event)"
+    (unlikeCocktails)="unlikeCocktails($event)" 
+    [cocktails]="cocktails()"
+    class="w-half card xs-w-full"/> 
+    @let sc = selectedCocktail(); @if(sc){
+    <app-cocktails-details
+      (likeCocktails)="likeCocktails($event)"
+      (unlikeCocktails)="unlikeCocktails($event)"
+      [isLiked]="selectedCocktailIsLiked()"
+      class="w-half xs-w-full card"
+      [cocktail]="sc"
     />
-    @if(selectedCocktail()){
-      <app-cocktails-details class="w-half xs-w-full card" [cocktail]="selectedCocktail()"/>
     }
   `,
   styles: `:host{
@@ -30,18 +38,31 @@ import { cocktails } from 'app/shared/data';
       `,
 })
 export class CocktailsComponent {
-  cocktailsService = inject(CokctailsService);
-  cocktails = cocktailsService.cocktailsResource
-  cocktails = signal<Cocktail[]>([]);
-  selectedCocktail = signal<Cocktail>(this.cocktails()[0]);
-  selectedCocktailName = computed(() => this.selectedCocktail()?.title)
-  selectCocktail(cocktailName: string) {
-    console.log(cocktailName);
-    const newCocktail = this.cocktails().find(
-      ({ title }) => title === cocktailName
-    );
-    if (newCocktail) {
-      this.selectedCocktail.set(newCocktail);
-    }
+  cocktailsService = inject(CocktailsService);
+  cartService = inject(CartService);
+  cocktails = computed(
+    () => this.cocktailsService.cocktailsResource.value() || []
+  );
+
+  selectedCocktailId = signal<string | null>(null);
+  selectedCocktail = computed(() =>
+    this.cocktails().find(
+      (cocktail) => cocktail._id === this.selectedCocktailId()
+    )
+  );
+  selectedCocktailIsLiked = computed(() => {
+    const selectedCocktailId = this.selectedCocktailId();
+    return selectedCocktailId
+      ? this.likedCocktailsID().includes(selectedCocktailId)
+      : false;
+  });
+
+  likedCocktailsID = computed(() => this.cartService.likedCocktailsId());
+  unlikeCocktails(cocktailID: string) {
+    this.cartService.unlikeCocktail(cocktailID);
+  }
+
+  likeCocktails(CocktailID: string) {
+    this.cartService.likeCocktail(CocktailID);
   }
 }

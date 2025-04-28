@@ -1,12 +1,12 @@
-import { Component, Input, input, signal } from '@angular/core';
+import { Component, effect, Input, input, output, signal } from '@angular/core';
 import { Cocktail } from 'app/shared/interfaces';
 
 
 @Component({
-  selector: 'app-cocktails-details',
-  standalone: true,
-  imports: [],
-  template: `
+    selector: 'app-cocktails-details',
+    imports: [],
+    standalone:true,
+    template: `
     <h2 class="mb-20 py-6">Details des cocktails</h2>
 
     <img [src]="cocktail().imageUrl" />
@@ -18,8 +18,22 @@ import { Cocktail } from 'app/shared/interfaces';
   <li class="my-2">{{ingredient}}</li>
   }
   </ul>
+  <ul>
+    <div class="flex">
+      <button class="btn btn-primary">Ajouter un cocktail</button>
+      <span class="flex-auto"></span>
+      @if(isLiked()){
+        <button class="btn btn-primary" (click)="unlikeCocktails.emit(cocktail()._id)" >Unlike</button>
+
+      } @else {
+        
+        <button class="btn btn-outline-primary" (click)="likeCocktails.emit(cocktail()._id)">Like</button>
+
+      }
+    </div>
+  </ul>
   `,
-  styles: `
+    styles: `
 
     :host{
       display:flex;
@@ -39,8 +53,16 @@ import { Cocktail } from 'app/shared/interfaces';
       font-size: 14px;
       font-weight: 500;
     }
-  `,
+  `
 })
 export class CocktailsDetailsComponent {
 cocktail = input.required<Cocktail>();
+isLiked = input.required<boolean>();
+likeCocktails = output<string>();
+unlikeCocktails = output<string>();
+// constructor(){
+//   effect(() => {
+//     console.log('isLiked a changé, nouvelle valeur:', this.isLiked());
+//   });
+// }
 }

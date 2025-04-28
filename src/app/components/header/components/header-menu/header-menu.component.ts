@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-header-menu',
-  standalone: true,
-  imports: [],
-  template: `
+    selector: 'app-header-menu',
+    imports: [],
+    template: `
     <button (click)="toggleMenu()">=</button>
     @if(show()){
     <ul>
@@ -19,7 +18,7 @@ import { Component, signal } from '@angular/core';
 
     }
   `,
-  styles: `
+    styles: `
   button{
     padding: 16px;
     border: none;
@@ -48,7 +47,7 @@ import { Component, signal } from '@angular/core';
       border-radius: var(--radius);
       transition: all, 0.4s
     }
-  }`,
+  }`
 })
 export class HeaderMenuComponent {
   show = signal(false);

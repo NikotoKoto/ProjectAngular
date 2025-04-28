@@ -5,13 +5,12 @@ import { CocktailsComponent } from './components/cocktails/cocktails.component';
 import { seedData } from './shared/data/seed';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent, CocktailsComponent],
-  template: ` <app-header />
+    selector: 'app-root',
+    imports: [HeaderComponent, FooterComponent, CocktailsComponent],
+    template: ` <app-header />
     <app-cocktails class="flex-auto" />
     <app-footer />`,
-  styles: `
+    styles: `
     :host {
     min-height : 100vh;
     display: flex;
