@@ -44,7 +44,6 @@ import { FormsModule } from '@angular/forms';
       </li>
       }
     </ul>
-    <button class="btn btn-primary">Ajouter un Cocktail</button>
   `,
   styles: `
   li:hover {
@@ -63,7 +62,7 @@ export class CocktailsListComponent {
   filter = signal('');
   filteredCocktail = computed(() =>
     this.cocktails()?.filter(({ title }) =>
-      title.toLowerCase().includes(this.filter().toLowerCase())
+      (title ?? '').toLowerCase().includes(this.filter().toLowerCase())
     )
   );
 

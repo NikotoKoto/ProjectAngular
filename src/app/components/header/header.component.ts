@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
     selector: 'app-header',
-    imports: [HeaderMenuComponent],
+    imports: [HeaderMenuComponent,RouterLink,RouterLinkActive],
     template: `
     <div class="flex-auto text-bold text-lg" >Cocktails</div>
     <ul class="xs-hide flex flex-row gap-16 ">
-      <li>
-        <a href="#">Panier</a>
+    <li>
+        <a routerLink="/admin" routerLinkActive="active-link">Admin</a>
+      </li>  
+    <li>
+        <a routerLink="/basket" routerLinkActive="active-link">Panier</a>
       </li>
       <li>
-        <a href="#"> Listes des cocktails</a>
+        <a routerLink="/cocktails" routerLinkActive="active-link"> Cocktails</a>
       </li>
     </ul>
 

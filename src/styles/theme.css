@@ -35,6 +35,9 @@ body{
     background-color: var(--danger);
     color: var(--white);
 }
+.btn-danger:hover{
+    background-color: var(--dark-danger);
+}
 
 .btn-succes{
     background-color: var(--succes);
@@ -63,4 +66,10 @@ body{
     border: var(--border);
     padding: 12px;
     border-radius: 20px;
+}
+
+.active-link{
+    background-color: var(--dark-primary);
+    border-radius: var(--radius);
+    color: var(--white);
 }

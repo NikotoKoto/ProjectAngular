@@ -11,5 +11,13 @@ export class CocktailsService {
     loader: async (): Promise <Cocktail[]> => 
     (await fetch(this.BASE_URL)).json(),
   })
+
+
+  async deleteCocktail(cocktailId : string){
+    await fetch(`${this.BASE_URL}/${cocktailId}`,{
+      method: 'DELETE'
+    })
+   this.cocktailsResource.reload();
+  }
   constructor() { }
 }

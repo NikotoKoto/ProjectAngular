@@ -20,7 +20,7 @@ import { Cocktail } from 'app/shared/interfaces';
   </ul>
   <ul>
     <div class="flex">
-      <button class="btn btn-primary">Ajouter un cocktail</button>
+      <button (click)="addIngredient.emit(cocktail().ingredient)" class="btn btn-primary">Ajouter le cocktail au panier</button>
       <span class="flex-auto"></span>
       @if(isLiked()){
         <button class="btn btn-primary" (click)="unlikeCocktails.emit(cocktail()._id)" >Unlike</button>
@@ -60,6 +60,7 @@ cocktail = input.required<Cocktail>();
 isLiked = input.required<boolean>();
 likeCocktails = output<string>();
 unlikeCocktails = output<string>();
+addIngredient = output<string[]>();
 // constructor(){
 //   effect(() => {
 //     console.log('isLiked a changé, nouvelle valeur:', this.isLiked());
