@@ -33,3 +33,15 @@ a{
 a:hover{
   text-decoration: underline;
 }
+
+input{
+   border: var(--border);
+    padding: 12px;
+    border-radius: 10px;
+}
+
+textarea{
+  border: var(--border);
+    padding: 12px;
+    border-radius: 10px;
+}
