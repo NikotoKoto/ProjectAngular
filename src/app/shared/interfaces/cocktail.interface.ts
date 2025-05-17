@@ -3,5 +3,14 @@ export interface Cocktail {
     imageUrl : string;
     title: string;
     description : string;
-    ingredient: string[];
+    ingredients: string[];
+}
+
+
+export interface CocktailForm {
+    _id?: string,
+    imageUrl : string;
+    title: string;
+    description : string;
+    ingredients: string[];
 }

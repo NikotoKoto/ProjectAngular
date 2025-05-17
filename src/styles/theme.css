@@ -62,14 +62,24 @@ body{
 .radius{
     border-radius: var(--radius)
 }
-.input{
+.input, textarea{
     border: var(--border);
+    font-family: var(--font-family);
     padding: 12px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .active-link{
     background-color: var(--dark-primary);
     border-radius: var(--radius);
     color: var(--white);
+}
+
+.error{
+    color: var(--danger);
+    font-size: 12px;
+    font-weight: 500;
+}
+button[disabled]{
+    opacity: 0.5;
 }

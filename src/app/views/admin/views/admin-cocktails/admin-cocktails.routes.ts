@@ -16,7 +16,7 @@ export const routes : Routes= [
             path: 'new',
             component: AdminCocktailsFormComponent
         },{
-            path:':cocktailId',
+            path:':cocktailId/edit',
             component: AdminCocktailsFormComponent 
 
         },
